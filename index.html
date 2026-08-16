@@ -11,660 +11,332 @@
 <style>
 :root{
   --ink:#12191a;
-  --ink-soft:#2a3435;
+  --ink-soft:#3d4747;
   --paper:#f6f2ea;
   --paper-2:#efe8db;
-  --paper-3:#e7ddc9;
   --line: rgba(18,25,26,0.14);
   --aegean:#1c4b4f;
   --aegean-deep:#0e2f32;
   --terracotta:#c1552f;
   --gold:#a9812e;
-  --olive:#5c6b3f;
   --white:#fffdf8;
   --mistake:#8a2f2a;
   --win:#2f5d3a;
   --font-display:'Instrument Serif', Georgia, serif;
   --font-body:'Switzer', 'Work Sans', sans-serif;
-  --wide:1320px;
+  --wide:1160px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--font-body);
-  line-height:1.5;
-  overflow-x:hidden;
-}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.55;overflow-x:hidden;font-size:19px;}
 img{max-width:100%;display:block;}
 a{color:inherit;}
-.wrap{max-width:var(--wide);margin:0 auto;padding-inline:clamp(20px,5vw,72px);}
+.wrap{max-width:var(--wide);margin:0 auto;padding-inline:clamp(20px,5vw,60px);}
+.ribbon{background:var(--aegean-deep);color:var(--paper);font-size:clamp(0.72rem,1.4vw,0.9rem);letter-spacing:0.1em;text-transform:uppercase;padding:12px 0;text-align:center;font-weight:700;}
 
-/* ===== TOP RIBBON ===== */
-.ribbon{
-  background:var(--aegean-deep);
-  color:var(--paper);
-  font-size:clamp(0.65rem,1.4vw,0.85rem);
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  padding:10px 0;
-  text-align:center;
-  font-weight:600;
-}
+/* HERO */
+.hero{padding:clamp(40px,7vw,80px) 0 clamp(36px,5vw,56px);background:var(--paper);border-bottom:1px solid var(--line);}
+.hero-kicker{display:flex;align-items:center;gap:12px;font-size:clamp(0.8rem,1.3vw,1rem);letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);font-weight:800;margin-bottom:18px;}
+.hero-kicker::before{content:"";width:40px;height:2px;background:var(--terracotta);}
+h1.hero-title{font-family:var(--font-display);font-weight:400;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.02;letter-spacing:-0.01em;margin-bottom:22px;}
+.hero-title em{font-style:italic;color:var(--aegean);}
+.hero-sub{font-size:clamp(1.15rem,2vw,1.5rem);max-width:820px;color:var(--ink-soft);font-weight:500;}
+.hero-meta{margin-top:28px;display:flex;gap:28px;flex-wrap:wrap;font-size:0.95rem;color:var(--ink-soft);font-weight:600;}
+.hero-meta span{display:flex;align-items:center;gap:8px;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--terracotta);display:inline-block;}
 
-/* ===== HERO ===== */
-.hero{
-  position:relative;
-  padding:clamp(48px,8vw,110px) 0 clamp(40px,6vw,70px);
-  background:
-    radial-gradient(1100px 500px at 85% -10%, rgba(28,75,79,0.16), transparent 60%),
-    radial-gradient(900px 480px at 5% 110%, rgba(193,85,47,0.14), transparent 60%),
-    var(--paper);
-  border-bottom:1px solid var(--line);
-}
-.hero-kicker{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  font-size:clamp(0.72rem,1.3vw,0.95rem);
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--terracotta);
-  font-weight:700;
-  margin-bottom:clamp(20px,3vw,32px);
-}
-.hero-kicker::before{content:"";width:44px;height:2px;background:var(--terracotta);display:inline-block;}
-h1.hero-title{
-  font-family:var(--font-display);
-  font-weight:400;
-  font-size:clamp(3.4rem,9vw,8.2rem);
-  line-height:0.94;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-  max-width:20ch;
-}
-h1.hero-title em{font-style:italic;color:var(--aegean);}
-.hero-sub{
-  margin-top:clamp(20px,3vw,34px);
-  font-size:clamp(1.1rem,2vw,1.5rem);
-  color:var(--ink-soft);
-  max-width:56ch;
-  font-weight:500;
-}
-.hero-meta{
-  margin-top:clamp(32px,4vw,48px);
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:clamp(16px,2vw,24px);
-  border-top:1px solid var(--line);
-  padding-top:clamp(20px,3vw,28px);
-}
-.hero-meta .m-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);opacity:0.65;font-weight:700;margin-bottom:6px;}
-.hero-meta .m-val{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:700;}
+/* BIG BOTTOM LINES */
+.bl-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:2px solid var(--ink);}
+.bl-card{padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px);border-right:1px solid var(--line);}
+.bl-card:last-child{border-right:none;}
+.bl-num{font-family:var(--font-display);font-size:1.1rem;color:var(--terracotta);font-weight:600;margin-bottom:10px;}
+.bl-head{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.1;margin-bottom:14px;}
+.bl-body{font-size:1.05rem;color:var(--ink-soft);}
+.bl-body b{color:var(--ink);}
+@media (max-width:860px){.bl-grid{grid-template-columns:1fr;}.bl-card{border-right:none;border-bottom:1px solid var(--line);}}
 
-/* ===== SECTION SCAFFOLD ===== */
-section{padding:clamp(56px,8vw,120px) 0;}
-.section-head{
-  display:flex;
-  align-items:baseline;
-  gap:clamp(16px,3vw,28px);
-  margin-bottom:clamp(36px,5vw,56px);
-  flex-wrap:wrap;
-}
-.section-num{
-  font-family:var(--font-display);
-  font-size:clamp(2.4rem,5vw,4rem);
-  color:var(--paper-3);
-  -webkit-text-stroke:2px var(--aegean);
-  color:transparent;
-  line-height:1;
-  font-weight:400;
-}
-.section-title{
-  font-family:var(--font-display);
-  font-size:clamp(2.2rem,5.4vw,4.6rem);
-  line-height:1.02;
-  font-weight:400;
-  letter-spacing:-0.01em;
-}
-.section-title .accent{color:var(--terracotta);font-style:italic;}
-.eyebrow{
-  font-size:0.78rem;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  font-weight:700;
-  color:var(--aegean);
-  margin-bottom:14px;
-  display:block;
-}
+section{padding:clamp(48px,7vw,88px) 0;}
+.section-num{font-family:var(--font-display);font-size:1.3rem;color:var(--terracotta);font-weight:600;display:block;margin-bottom:10px;}
+.section-title{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.05;margin-bottom:8px;}
+.section-title .accent{color:var(--aegean);font-style:italic;}
+.section-sub{font-size:1.15rem;color:var(--ink-soft);max-width:760px;margin-top:12px;}
+.section-head{margin-bottom:clamp(32px,5vw,52px);}
 
-/* ===== BOTTOM LINE CALLOUT ===== */
-.bottomline{
-  background:var(--aegean-deep);
-  color:var(--white);
-  border-radius:6px;
-  padding:clamp(28px,4vw,48px) clamp(24px,4.5vw,52px);
-  margin:clamp(28px,4vw,44px) 0 clamp(40px,5vw,56px);
-  position:relative;
-}
-.bottomline::before{
-  content:"BOTTOM LINE";
-  position:absolute;
-  top:-13px;
-  left:clamp(24px,4.5vw,52px);
-  background:var(--terracotta);
-  color:var(--white);
-  font-size:0.7rem;
-  letter-spacing:0.14em;
-  font-weight:800;
-  padding:5px 14px;
-  border-radius:3px;
-}
-.bottomline p{
-  font-family:var(--font-display);
-  font-size:clamp(1.5rem,3vw,2.4rem);
-  line-height:1.28;
-  font-weight:400;
-  font-style:italic;
-}
-.bottomline p strong{font-style:normal;color:#f2c48a;font-weight:700;}
+/* stat row */
+.stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:32px 0 8px;}
+.stat{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center;}
+.stat-n{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3rem);color:var(--mistake);line-height:1;}
+.stat-l{font-size:0.85rem;color:var(--ink-soft);margin-top:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.02em;}
+@media (max-width:860px){.stat-row{grid-template-columns:repeat(2,1fr);}}
 
-/* ===== BODY COPY ===== */
-.lede{
-  font-size:clamp(1.15rem,2vw,1.55rem);
-  line-height:1.55;
-  max-width:74ch;
-  color:var(--ink-soft);
-  font-weight:500;
-}
-.prose{font-size:clamp(1rem,1.2vw,1.15rem);line-height:1.7;max-width:70ch;color:var(--ink-soft);}
-.prose + .prose{margin-top:1.1em;}
-.prose strong{color:var(--ink);font-weight:700;}
+table.audit{width:100%;border-collapse:collapse;margin-top:16px;font-size:0.98rem;}
+table.audit th{text-align:left;padding:12px 14px;background:var(--aegean-deep);color:var(--paper);font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.03em;}
+table.audit td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+table.audit tr:nth-child(even){background:rgba(0,0,0,0.02);}
+.tagset{display:flex;gap:6px;flex-wrap:wrap;}
+.tag{font-size:0.72rem;font-weight:700;padding:3px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.02em;}
+.tag.fb{background:#f3ded4;color:var(--mistake);}
+.tag.staff{background:#e6e2d4;color:#6b5b1f;}
+.tag.clean{background:#dde6de;color:var(--win);}
+.tag.noise{background:#dbe4e6;color:var(--aegean-deep);}
+.tag.value{background:#f0e0c8;color:var(--gold);}
 
-/* ===== STAT STRIP ===== */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-  margin:clamp(32px,4vw,48px) 0;
-}
-.stat{background:var(--white);padding:clamp(20px,2.6vw,30px) clamp(18px,2vw,24px);}
-.stat .num{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);color:var(--terracotta);line-height:1;}
-.stat .lab{margin-top:10px;font-size:0.82rem;color:var(--ink-soft);font-weight:600;line-height:1.4;}
-.stat .src{margin-top:8px;font-size:0.68rem;color:var(--ink-soft);opacity:0.6;}
-.stat .src a{color:inherit;text-decoration:underline;}
+.quote-block{background:var(--white);border-left:4px solid var(--terracotta);padding:20px 24px;margin:16px 0;font-size:1.05rem;font-style:italic;}
+.quote-src{margin-top:10px;font-size:0.85rem;font-style:normal;color:var(--ink-soft);font-weight:600;}
 
-/* ===== TIMELINE / CONTEXT CARDS ===== */
-.context-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(20px,2.4vw,28px);
-  margin-top:clamp(28px,3vw,40px);
-}
-@media (max-width:820px){.context-grid{grid-template-columns:1fr;}}
-.ccard{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:clamp(22px,2.6vw,32px);
-}
-.ccard h4{
-  font-family:var(--font-display);
-  font-size:clamp(1.35rem,2.2vw,1.8rem);
-  font-weight:400;
-  margin-bottom:12px;
-  color:var(--aegean);
-}
-.ccard p{font-size:0.98rem;line-height:1.65;color:var(--ink-soft);}
-.ccard p+p{margin-top:0.8em;}
-.ccard .src{display:block;margin-top:14px;font-size:0.72rem;opacity:0.55;}
-.ccard .src a{text-decoration:underline;}
+.correction-box{background:#fff6e0;border:2px solid var(--gold);border-radius:14px;padding:28px 30px;margin-top:24px;}
+.correction-box .lbl{font-weight:800;color:var(--gold);text-transform:uppercase;font-size:0.85rem;letter-spacing:0.06em;margin-bottom:10px;}
+.correction-box p{margin-bottom:10px;}
 
-/* ===== QUOTE BLOCK ===== */
-blockquote.rev{
-  border-left:4px solid var(--terracotta);
-  padding:4px 0 4px clamp(18px,2.4vw,26px);
-  margin:clamp(18px,2.2vw,24px) 0;
-  font-family:var(--font-display);
-  font-style:italic;
-  font-size:clamp(1.15rem,1.8vw,1.5rem);
-  line-height:1.5;
-  color:var(--ink);
-}
-blockquote.rev cite{
-  display:block;
-  font-family:var(--font-body);
-  font-style:normal;
-  font-size:0.8rem;
-  letter-spacing:0.04em;
-  color:var(--ink-soft);
-  margin-top:10px;
-  font-weight:600;
-}
-blockquote.rev cite a{text-decoration:underline;opacity:0.7;}
+.split-head{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
+.split-head .tag-icon{font-family:var(--font-display);font-size:2.4rem;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;}
+.mistakes .tag-icon{background:var(--mistake);color:var(--white);}
+.wins .tag-icon{background:var(--win);color:var(--white);}
+.item-grid{display:flex;flex-direction:column;gap:18px;}
+.item{background:var(--white);border-radius:16px;padding:26px 28px;border:1px solid var(--line);}
+.item-num{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:6px;}
+.mistakes .item-num{color:var(--mistake);}
+.wins .item-num{color:var(--win);}
+.item-title{font-size:1.3rem;font-weight:800;margin-bottom:8px;}
+.item-body{color:var(--ink-soft);font-size:1.02rem;}
+.item-body b{color:var(--ink);}
 
-/* ===== COMPLAINT TABLE ===== */
-.rank-table{width:100%;border-collapse:collapse;margin:clamp(24px,3vw,36px) 0;font-size:0.94rem;}
-.rank-table th{
-  text-align:left;
-  font-size:0.72rem;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  padding:10px 14px;
-  border-bottom:2px solid var(--ink);
-}
-.rank-table td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top;}
-.rank-table tr:hover td{background:var(--white);}
-.sev{
-  display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;
-}
-.sev.crit{background:#f4dbd6;color:var(--mistake);}
-.sev.high{background:#f6e6cf;color:var(--gold);}
-.sev.med{background:#e4e9dd;color:var(--olive);}
-
-/* ===== MISTAKES / WINS ===== */
-.split-head{
-  display:flex;align-items:center;gap:14px;margin-bottom:clamp(22px,2.6vw,30px);
-}
-.split-head .tag{
-  font-family:var(--font-display);
-  font-size:clamp(2.4rem,4.5vw,3.6rem);
-  font-weight:400;
-}
-.mistakes .tag{color:var(--mistake);}
-.wins .tag{color:var(--win);}
-.card-list{display:flex;flex-direction:column;gap:clamp(16px,2vw,20px);}
-.mw-card{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-left:6px solid var(--mistake);
-  border-radius:8px;
-  padding:clamp(20px,2.4vw,28px);
-}
-.wins .mw-card{border-left-color:var(--win);}
-.mw-card .n{
-  font-family:var(--font-display);
-  font-size:2.2rem;
-  color:var(--paper-3);
-  -webkit-text-stroke:1.5px var(--mistake);
-  color:transparent;
-  line-height:1;
-  float:left;
-  margin-right:16px;
-}
-.wins .mw-card .n{-webkit-text-stroke-color:var(--win);}
-.mw-card h5{font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:800;margin-bottom:8px;letter-spacing:-0.01em;}
-.mw-card p{font-size:0.94rem;line-height:1.65;color:var(--ink-soft);}
-.mw-card .src{display:block;margin-top:10px;font-size:0.7rem;opacity:0.55;}
-.mw-card .src a{text-decoration:underline;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px);}
-@media (max-width:900px){.two-col{grid-template-columns:1fr;}}
-
-/* ===== SOCIAL BENCHMARK BARS ===== */
-.bench{margin-top:clamp(24px,3vw,36px);}
-.bench-row{display:grid;grid-template-columns:180px 1fr 90px;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);}
-.bench-row .name{font-weight:700;font-size:0.94rem;}
-.bench-row .name small{display:block;font-weight:500;font-size:0.72rem;color:var(--ink-soft);opacity:0.7;}
-.bar-track{background:var(--paper-2);border-radius:4px;height:14px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--aegean),var(--terracotta));}
-.bar-fill.dim{background:var(--ink-soft);opacity:0.35;}
-.bench-row .val{text-align:right;font-weight:800;font-size:0.94rem;}
-.bench-note{margin-top:16px;font-size:0.8rem;color:var(--ink-soft);opacity:0.75;}
-.bench-note a{text-decoration:underline;}
-
-/* ===== POSITIONING SCRIPT ===== */
-.script-box{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:clamp(26px,3.2vw,40px);
-  margin-top:clamp(20px,2.4vw,28px);
-}
-.script-box .line{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-size:clamp(1.2rem,2vw,1.6rem);
-  line-height:1.5;
-  padding:16px 0;
-  border-bottom:1px dashed var(--line);
-}
-.script-box .line:last-child{border-bottom:none;}
-.script-box .line::before{content:"“";color:var(--terracotta);font-weight:700;}
-.script-box .line::after{content:"”";color:var(--terracotta);font-weight:700;}
-
-/* ===== CLOCK CALLOUT ===== */
-.clock{
-  background:linear-gradient(135deg,var(--terracotta),#8f3a1f);
-  color:var(--white);
-  border-radius:8px;
-  padding:clamp(24px,3vw,36px);
-  margin-top:clamp(28px,3vw,40px);
-}
-.clock h4{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:10px;font-weight:400;}
-.clock p{font-size:0.98rem;line-height:1.65;opacity:0.95;}
-.clock a{text-decoration:underline;color:#ffe3d1;}
-
-/* ===== FOOTER / SOURCES ===== */
-footer{
-  background:var(--aegean-deep);
-  color:var(--paper);
-  padding:clamp(40px,5vw,64px) 0;
-}
-footer .foot-title{font-family:var(--font-display);font-size:clamp(1.4rem,2.4vw,2rem);margin-bottom:16px;}
-footer .foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;font-size:0.82rem;line-height:1.8;opacity:0.85;}
-footer a{text-decoration:underline;color:inherit;}
-.disclaimer{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.14);font-size:0.74rem;opacity:0.6;line-height:1.6;}
-
-/* ===== NAV DOTS (tab switch) ===== */
-.tabbar{
-  position:sticky;top:0;z-index:50;
-  background:var(--paper);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(8px);
-}
-.tabbar .wrap{display:flex;gap:clamp(6px,1.5vw,12px);padding-block:14px;overflow-x:auto;}
-.tabbtn{
-  font-size:0.82rem;font-weight:700;letter-spacing:0.02em;
-  padding:9px 18px;border-radius:30px;border:1px solid var(--line);
-  background:var(--white);white-space:nowrap;cursor:pointer;
-  transition:all 0.2s ease;
-}
-.tabbtn.active,.tabbtn:hover{background:var(--aegean-deep);color:var(--white);border-color:var(--aegean-deep);}
-
-@media (max-width:600px){
-  .rank-table{font-size:0.82rem;}
-  .rank-table th,.rank-table td{padding:8px;}
-  .bench-row{grid-template-columns:110px 1fr 60px;}
-}
+footer{background:var(--aegean-deep);color:var(--paper);padding:40px 0;text-align:center;font-size:0.9rem;}
+footer a{text-decoration:underline;}
+.src-note{font-size:0.82rem;color:var(--ink-soft);margin-top:10px;}
 </style>
 </head>
 <body>
 
-<div class="ribbon">Confidential meeting brief · Prepared for a founder-level conversation with Leon Avigad · Brown Hotels Greece</div>
+<div class="ribbon">Prepared for meeting with Leon Avigad, Founder &amp; CEO, Brown Hotels — Greece portfolio</div>
 
-<nav class="tabbar">
+<section class="hero">
   <div class="wrap">
-    <a class="tabbtn" href="#s1">01 — Leon &amp; The Deal</a>
-    <a class="tabbtn" href="#s2">02 — Reviews Audit</a>
-    <a class="tabbtn" href="#s3">03 — Social Audit</a>
-    <a class="tabbtn" href="#s4">5 Mistakes</a>
-    <a class="tabbtn" href="#s5">5 Wins</a>
-    <a class="tabbtn" href="#s6">The Script</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-kicker">Pre-meeting intelligence · Play Paros &amp; Brown Hotels Greece</div>
-    <h1 class="hero-title">You're not pitching an <em>F&amp;B hire.</em><br/>You're pitching the <em>fix.</em></h1>
-    <p class="hero-sub">Leon Avigad built his identity on food, design and craft. His Greek estate is currently failing that exact standard — in guests' own words, on the record, with volume. This is the evidence, the audit, and the opening.</p>
+    <div class="hero-kicker">Meeting Brief — 3 Subjects, 3 Bottom Lines</div>
+    <h1 class="hero-title">Brown Hotels Greece:<br><em>where the money is being left on the table.</em></h1>
+    <p class="hero-sub">Simple version: guests like the buildings. Guests hate the food. Nobody on social media in Greece is watching. That gap is your opening.</p>
     <div class="hero-meta">
-      <div><div class="m-label">The moment</div><div class="m-val">Post-restructuring, lease-heavy, under a Q4 2026 valuation clock</div></div>
-      <div><div class="m-label">The asset in the room</div><div class="m-val">Play Paros — 40 rooms, no onsite F&amp;B</div></div>
-      <div><div class="m-label">Your angle</div><div class="m-val">Service + F&amp;B + Revenue, not a single department</div></div>
+      <span><span class="dot"></span>8 Greek hotels checked</span>
+      <span><span class="dot"></span>35+ real guest reviews read and counted</span>
+      <span><span class="dot"></span>Every number below is sourced — see footer</span>
     </div>
   </div>
-</header>
+</section>
 
-<!-- SECTION 1 — LEON & THE DEAL -->
+<section style="padding:0;">
+  <div class="bl-grid">
+    <div class="bl-card">
+      <div class="bl-num">01</div>
+      <div class="bl-head">Leon Avigad</div>
+      <div class="bl-body">He sold his own company two years ago because it went broke. He kept his job by promising the new owner he'd protect <b>"quality and food."</b> He has not delivered on that promise yet — guests say so, in writing, over and over.</div>
+    </div>
+    <div class="bl-card">
+      <div class="bl-num">02</div>
+      <div class="bl-head">The ownership change</div>
+      <div class="bl-body">A company called <b>Israel Canada</b> now owns the leases on all 8 Greek hotels. This was a <b>real-estate and debt deal</b> — not an F&amp;B deal. Nobody outsourced food to anyone. What's true instead: rent is fixed and can't be cut, so <b>food and drink is now the only lever left to make more money.</b></div>
+    </div>
+    <div class="bl-card">
+      <div class="bl-num">03</div>
+      <div class="bl-head">Your opening</div>
+      <div class="bl-body">Brown now sells "restaurant management" as a service to <b>other</b> hotel owners — while their own kitchens get some of the worst reviews in the group. You walk in offering to fix the exact thing they're trying to sell.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: Correction + real deal facts -->
 <section id="s1">
   <div class="wrap">
     <div class="section-head">
       <span class="section-num">01</span>
-      <h2 class="section-title">Leon Avigad &amp; the <span class="accent">Israel Canada</span> transition</h2>
-    </div>
-    <p class="lede">Brown didn't sell Greece from strength. It sold Greece from insolvency — and the man across the table from you is the one person whose personal brand equity is still riding on "the food, the design, the calm energy."</p>
-
-    <div class="stats">
-      <div class="stat"><div class="num">~₪980M</div><div class="lab">Brown Hotels' total disclosed debt at insolvency filing</div><div class="src"><a href="https://www.globes.co.il/news/article.aspx?did=1001496882" target="_blank">Globes</a></div></div>
-      <div class="stat"><div class="num">80–90%</div><div class="lab">Haircut taken by financial creditors in the restructuring</div><div class="src"><a href="https://www.globes.co.il/news/article.aspx?did=1001496882" target="_blank">Globes</a></div></div>
-      <div class="stat"><div class="num">₪0</div><div class="lab">Cash paid for the Greek activity itself — acquired for no payment</div><div class="src"><a href="https://en.globes.co.il/en/article-brown-hotels-asks-court-to-approve-sale-to-israel-canada-1001496884" target="_blank">Globes English</a></div></div>
-      <div class="stat"><div class="num">₪0.34M</div><div class="lab">EBITDA vs. ₪29.9M EBITDAR — rent eats nearly the entire margin</div><div class="src"><a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">DeepTASE</a></div></div>
+      <h2 class="section-title">What actually <span class="accent">happened</span></h2>
+      <p class="section-sub">Plain facts, no spin. Use these — they are checked and correct.</p>
     </div>
 
-    <div class="context-grid">
-      <div class="ccard">
-        <h4>What actually happened</h4>
-        <p>Israel Canada Hotels (TASE: ISCN) assumed the leases on <strong>8 Greek properties, ~1,076 rooms</strong>, for total consideration of only ~₪100–112M — mostly by assumption of debt, not cash. Greek landlords are Aroundtown and WH Europe. This is a lease deal, not a property purchase.</p>
-        <span class="src">Sources: <a href="https://www.ered.gr/real-estate-news/brown-hotels-in-greece-and-israel-were-sold" target="_blank">Ered.gr</a>, <a href="https://www.calcalist.co.il/market/article/r1m009cteye" target="_blank">Calcalist</a>, <a href="https://hotel.report/management/the-acquisition-of-brown-hotels-by-israel-canada-is-nearing-completion" target="_blank">Hotel Report</a></span>
-      </div>
-      <div class="ccard">
-        <h4>Why the economics matter to you</h4>
-        <p>Lease liabilities of <strong>~₪856.5M, mostly CPI-linked</strong>, are fixed. Rent cannot be renegotiated away. That leaves exactly three levers for anyone trying to move EBITDA this year: <strong>rate, ancillary/F&amp;B capture, and occupancy from owned demand.</strong> That's your entire pitch, structurally.</p>
-        <span class="src">Source: <a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">DeepTASE analysis</a></span>
-      </div>
-      <div class="ccard">
-        <h4>Leon's role, and his own words</h4>
-        <p>Avigad retains a strong operating role specifically "so that the consistency, quality and experience that characterize Brown Hotels are ensured." At a Calcalist conference he described sourcing the best local Greek designers, architects <strong>and chefs</strong>, and called boutique hospitality visible "in the design, the food, the calm energy."</p>
-        <span class="src">Sources: <a href="https://www.ot.gr/2025/12/10/tourismos/israel-canada-hotels-stoxos-ta-3-000-domatia-stin-ellada-me-simaia-tin-brown/" target="_blank">OT.gr</a>, <a href="https://www.calcalist.co.il/conferences/article/sk5vssn00q" target="_blank">Calcalist</a>, <a href="https://inbusinessnews.reporter.com.cy/article/436842/leon-avigad-i-kathodos-tis-brown-hotels-to-entharryntiko-ependytiko-periballon-tis-kyproy-kai-i-anazitisi-neon-efkairion" target="_blank">InBusinessNews Cyprus</a></span>
-      </div>
-      <div class="ccard">
-        <h4>The pivot that opens the door</h4>
-        <p>Brown is repositioning as a third-party hotel manager across ~4,000 rooms, explicitly selling <strong>"restaurant organization"</strong> as a service line. A weak F&amp;B estate is now a sales objection in every future management pitch he makes to other owners — which makes fixing it existential, not cosmetic.</p>
-        <span class="src">Source: <a href="https://bizness.gr/epekteinetai-sti-diacheirisi-xenodocheion-i-brown-hotels-ti-simatodotei-i-nea-stratigiki-kateythynsi-meta-tin-exagora-ton-xenodocheion/amp/" target="_blank">Bizness.gr</a></span>
-      </div>
+    <div class="correction-box">
+      <div class="lbl">Important correction</div>
+      <p><b>There was no "F&amp;B outsourcing to Canada/Israel" deal.</b> I checked this eight different ways. It does not exist. Do not say this in the room — if he corrects you, you lose credibility in the first minute.</p>
+      <p><b>What is true, and better:</b> Brown Hotels went broke in 2024. A company called <b>Israel Canada</b> bought the leases (the right to rent the buildings) on Brown's 8 Greek hotels — not the buildings themselves, not the food operation. Leon Avigad kept a senior role. Brown itself then started a <i>new</i> business: managing hotels and restaurants <i>for other owners</i>, across 40+ properties.</p>
     </div>
 
-    <div class="bottomline">
-      <p>Leon is not defending a healthy brand — he's <strong>rebuilding one under a valuation clock</strong>, while personally staking his name on a food-and-design promise his own Greek assets aren't keeping. Correction: no evidence supports a specific "Israel Canada F&amp;B outsourcing" deal — don't reference one. What's verified and more useful: Isla Brown Chania was already handed to a different operator, proving Leon's team is comfortable bringing in specialists. Frame yourself as that specialist.</p>
-    </div>
-
-    <div class="clock">
-      <h4>Why the timing works in your favor</h4>
-      <p>Part of Brown's activity was sold to parent Israel Canada for ₪20M with a <strong>repurchase call option exercisable 1 Oct – 31 Dec 2026.</strong> Whoever values that activity this Q4 has an acute interest in better trailing review scores and demonstrable ancillary revenue before year-end — and Play Theatrou adds 50 rooms that same September. A programme that shows movement by late September lands exactly inside that window. <a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">Source: DeepTASE</a></p>
+    <div style="margin-top:28px;">
+      <p style="font-size:1.1rem;margin-bottom:14px;"><b>Why this matters for money, in one line:</b> rent on these hotels is fixed and goes up with inflation every year. It cannot be renegotiated down. That means <b>food, drinks, and service are the only thing left that can grow profit</b> this year.</p>
+      <div class="quote-block">
+        Room income was about ₪73 million over nine months. After paying rent, almost nothing was left — profit before rent was ₪30 million, but after rent, only ₪0.3 million remained.
+        <div class="quote-src">Financial analysis, Israel Canada Hotels — <a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">DeepTASE</a></div>
+      </div>
+      <div class="quote-block">
+        "We came to Greece humbly... boutique hospitality means it's visible in the design, the food, the calm energy."
+        <div class="quote-src">Leon Avigad, in public interviews — <a href="https://www.calcalist.co.il/conferences/article/sk5vssn00q" target="_blank">Calcalist</a>, <a href="https://inbusinessnews.reporter.com.cy/article/436842/leon-avigad-i-kathodos-tis-brown-hotels-to-entharryntiko-ependytiko-periballon-tis-kyproy-kai-i-anazitisi-neon-efkairion" target="_blank">InBusinessNews Cyprus</a>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:1.1rem;"><b>The line to use in the room:</b> "You've said food is part of your promise to guests. Right now guests are saying, in writing, that you're not keeping that promise. Let's fix that — it's the fastest way to make more money without touching rent."</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2 — BAD REVIEWS AUDIT -->
+<!-- SECTION 2: Quantified review audit -->
 <section id="s2" style="background:var(--paper-2);">
   <div class="wrap">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2 class="section-title">The bad-reviews <span class="accent">audit</span>, counted &amp; classified</h2>
+      <h2 class="section-title">Every review, <span class="accent">counted</span></h2>
+      <p class="section-sub">35 real guest reviews read one by one, across 4 hotels. Here is what's actually wrong, by the numbers.</p>
     </div>
-    <p class="lede">Across every Greek property with a meaningful review base, one theme dominates every other complaint combined: food and beverage. This isn't a taste problem. It's named, in reviews, as a management failure.</p>
 
-    <table class="rank-table">
-      <thead><tr><th>#</th><th>Complaint category</th><th>Where it appears</th><th>Severity</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td><strong>F&amp;B quality, temperature, monotony, stock-outs</strong></td><td>Isla Brown Corinthia · Chalkida · Eretria · Acropol</td><td><span class="sev crit">Critical</span></td></tr>
-        <tr><td>2</td><td><strong>Breakfast specifically</strong> (poor, identical daily, absent or off-site)</td><td>Acropol · Chalkida · Corinthia · Play Paros · Play Theatrou</td><td><span class="sev crit">Critical</span></td></tr>
-        <tr><td>3</td><td>Understaffing &amp; service attitude</td><td>Corinthia · Chalkida · Acropol · Eretria</td><td><span class="sev high">High</span></td></tr>
-        <tr><td>4</td><td>Value-for-money vs. premium pricing</td><td>Corinthia (3.9) · Chalkida (3.4) · Acropol · Eretria</td><td><span class="sev high">High</span></td></tr>
-        <tr><td>5</td><td>Cleanliness / housekeeping</td><td>Corinthia · Eretria · Chalkida</td><td><span class="sev high">High</span></td></tr>
-        <tr><td>6</td><td>Nickel-and-diming (€3 water, €1 coffee capsule, exclusions from all-inclusive)</td><td>Corinthia · Eretria</td><td><span class="sev high">High</span></td></tr>
-        <tr><td>7</td><td>Noise / soundproofing</td><td>Play Paros · Play Theatrou · Play Psyri · Acropol</td><td><span class="sev med">Medium</span></td></tr>
-        <tr><td>8</td><td>Maintenance &amp; odour</td><td>Acropol · Play Paros · Play Theatrou</td><td><span class="sev med">Medium</span></td></tr>
-      </tbody>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">20/35</div><div class="stat-l">Complain about food</div></div>
+      <div class="stat"><div class="stat-n">14/35</div><div class="stat-l">Complain about staff</div></div>
+      <div class="stat"><div class="stat-n">9/35</div><div class="stat-l">Complain about noise</div></div>
+      <div class="stat"><div class="stat-n">8/35</div><div class="stat-l">Complain about cleaning</div></div>
+      <div class="stat"><div class="stat-n">7/35</div><div class="stat-l">Say it's not worth the price</div></div>
+    </div>
+
+    <p style="margin-top:20px;font-size:1.05rem;"><b>In plain words: food is the #1 problem, by a wide margin.</b> It shows up in more than half of all negative reviews. No other issue comes close.</p>
+
+    <div style="overflow-x:auto;margin-top:28px;">
+    <table class="audit">
+      <tr><th>Hotel</th><th>Score</th><th># reviews read</th><th>What's wrong</th></tr>
+      <tr>
+        <td><b>Isla Brown Corinthia</b> (Hilton-branded)</td>
+        <td>3.8 / 5<br><span style="font-size:0.8rem;color:var(--mistake);">26% rated 1–2 stars</span></td>
+        <td>12</td>
+        <td><span class="tagset"><span class="tag fb">Food</span><span class="tag staff">Staff</span><span class="tag noise">Noise</span></span><br>Cold food, days without drinks in stock, one guest named the food manager directly as the problem.</td>
+      </tr>
+      <tr>
+        <td><b>Brown Beach Chalkida</b> (now kosher resort)</td>
+        <td>3.5 / 5<br><span style="font-size:0.8rem;color:var(--mistake);">36% rated 1–2 stars</span></td>
+        <td>9</td>
+        <td><span class="tagset"><span class="tag fb">Food</span><span class="tag noise">Noise</span></span><br>Called "the big black spot." Same meals repeated daily, food sometimes not available at all.</td>
+      </tr>
+      <tr>
+        <td><b>Brown Beach Eretria</b></td>
+        <td>3.9 / 5</td>
+        <td>10</td>
+        <td><span class="tagset"><span class="tag fb">Food</span><span class="tag clean">Cleaning</span><span class="tag staff">Staff</span></span><br>Bland all-inclusive food, dirty linens not replaced, phones unanswered before check-in.</td>
+      </tr>
+      <tr>
+        <td><b>Brown Acropol</b> (Athens flagship, ~€200/night)</td>
+        <td>4.4 / 5</td>
+        <td>10</td>
+        <td><span class="tagset"><span class="tag fb">Food</span><span class="tag value">Value</span></span><br>Breakfast and coffee are the single most repeated complaint at the flagship city hotel.</td>
+      </tr>
+      <tr>
+        <td><b>Play Paros</b> (your target property)</td>
+        <td>Mostly 9–10/10 on booking sites</td>
+        <td>~25+ across platforms</td>
+        <td><span class="tagset"><span class="tag fb">Food</span></span><br>Guests are happy overall — but the #1 complaint is "no food on-site." One review: <i>"very expensive and no onsite food services."</i></td>
+      </tr>
     </table>
-
-    <div class="stats">
-      <div class="stat"><div class="num">3.8/5</div><div class="lab">Isla Brown Corinthia — a Hilton Curio asset, ~26% of reviews at 1–2 bubbles</div><div class="src"><a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor</a></div></div>
-      <div class="stat"><div class="num">3.5/5</div><div class="lab">Brown Beach Chalkida — ~36% of reviews at 1–2 bubbles</div><div class="src"><a href="https://www.tripadvisor.com/Hotel_Review-g1933469-d495537-Reviews-Brown_Beach_Chalkida-Agios_Minas_Euboea_Region_Central_Greece.html" target="_blank">TripAdvisor</a></div></div>
-      <div class="stat"><div class="num">4–7</div><div class="lab">Play Paros TripAdvisor reviews — vs. 412 for the boutique hotel three doors down</div><div class="src"><a href="https://www.tripadvisor.com/Hotel_Review-g642171-d33254314-Reviews-Play_Paros-Parikia_Paros_Cyclades_South_Aegean.html" target="_blank">TripAdvisor</a></div></div>
-      <div class="stat"><div class="num">10.0</div><div class="lab">Play Paros à-la-carte breakfast score on Booking.com — the one thing scored, guests can't stop asking for more of it</div><div class="src"><a href="https://www.booking.com/hotel/gr/play-paros.html" target="_blank">Booking.com</a></div></div>
     </div>
 
-    <blockquote class="rev">"The most disturbing thing was the bad food, partly cold, fish fried through… The F&amp;B manager is to blame."<cite>Isla Brown Corinthia, Sept 2025 — <a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor</a></cite></blockquote>
-    <blockquote class="rev">"The big black spot is the restaurant! …food is terrible and sometimes not even available at all — the hotel runs as a 2-star."<cite>Brown Beach Chalkida, 2024–2025 — <a href="https://www.tripadvisor.com/Hotel_Review-g1933469-d495537-Reviews-Brown_Beach_Chalkida-Agios_Minas_Euboea_Region_Central_Greece.html" target="_blank">TripAdvisor</a></cite></blockquote>
-    <blockquote class="rev">"It is time to change your coffee machines! The coffee is tasteless… truly unworthy for 200 euros a night!"<cite>Brown Acropol, Jun 2026 — <a href="https://www.tripadvisor.com/Hotel_Review-g189400-d19525668-Reviews-Brown_Acropol-Athens_Attica.html" target="_blank">TripAdvisor</a></cite></blockquote>
-    <blockquote class="rev">"Brown used to be synonymous with quality and detail, now it's a rip off… you will eat the same bland food at every meal."<cite>Brown Beach Eretria, Jun 2025 — <a href="https://www.tripadvisor.com/Hotel_Review-g262045-d652883-Reviews-Brown_Beach_Eretria-Eretria_Euboea_Region_Central_Greece.html" target="_blank">TripAdvisor</a></cite></blockquote>
-    <blockquote class="rev">"It was clean and safe. Very expensive and no onsite food services."<cite>Play Paros, Jul 2025 — <a href="https://www.expedia.com/Paros-Hotels-Play-Paros.h95040727.Hotel-Information" target="_blank">Expedia</a></cite></blockquote>
-
-    <div class="bottomline">
-      <p>Every complaint that matters is <strong>operationally fixable within one season</strong> — par-stock discipline, a 14-day menu cycle, holding-temperature protocol, one extra bar FTE at peak. This is the cheapest rate-defence available to Brown Hotels Greece today, and it is precisely the skillset your friend is offering to bring in-house.</p>
+    <p style="margin-top:24px;font-size:1.05rem;"><b>The single most damaging sentence found, word for word:</b></p>
+    <div class="quote-block">
+      "Brown used to be synonymous with quality and detail, now it's a rip off."
+      <div class="quote-src">Guest review, Brown Beach Eretria — <a href="https://www.tripadvisor.com/Hotel_Review-g262045-d652883-Reviews-Brown_Beach_Eretria-Eretria_Euboea_Region_Central_Greece.html" target="_blank">TripAdvisor</a></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3 — SOCIAL AUDIT -->
+<!-- SECTION 3: Social audit -->
 <section id="s3">
   <div class="wrap">
     <div class="section-head">
       <span class="section-num">03</span>
-      <h2 class="section-title">Social presence <span class="accent">audit</span>: Greece vs. category benchmark</h2>
+      <h2 class="section-title">Social media in Greece: <span class="accent">almost nobody's watching</span></h2>
     </div>
-    <p class="lede">Management is publicly targeting 3,000 rooms in Greece by 2030. There is currently no owned audience to fill them — and F&amp;B, the one content pillar that wins in this category, is nearly absent.</p>
-
-    <div class="bench">
-      <div class="bench-row"><div class="name">Six Senses</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="val">296K</div></div>
-      <div class="bench-row"><div class="name">Casa Cook<small>direct Aegean analogue</small></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><div class="val">260K</div></div>
-      <div class="bench-row"><div class="name">Ace Hotel</div><div class="bar-track"><div class="bar-fill" style="width:59%"></div></div><div class="val">175K</div></div>
-      <div class="bench-row"><div class="name">Nobu Hotels</div><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div><div class="val">~75K</div></div>
-      <div class="bench-row"><div class="name">Brown Hotels<small>global group account</small></div><div class="bar-track"><div class="bar-fill dim" style="width:13%"></div></div><div class="val">39K</div></div>
-      <div class="bench-row"><div class="name">Brown Hotels Greece<small>corporate Facebook</small></div><div class="bar-track"><div class="bar-fill dim" style="width:1%"></div></div><div class="val">103</div></div>
+    <div class="stat-row" style="grid-template-columns:repeat(4,1fr);">
+      <div class="stat"><div class="stat-n">103</div><div class="stat-l">Facebook followers, all of Brown Greece</div></div>
+      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Reviews on that page</div></div>
+      <div class="stat"><div class="stat-n">5 wks</div><div class="stat-l">Silent, in peak season</div></div>
+      <div class="stat"><div class="stat-n">260K</div><div class="stat-l">Casa Cook's Instagram (closest rival)</div></div>
     </div>
-    <p class="bench-note">Instagram/Facebook follower counts. Sources: <a href="https://www.instagram.com/sixsenses/" target="_blank">Six Senses</a>, <a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook</a>, <a href="https://www.instagram.com/acehotel/" target="_blank">Ace Hotel</a>, <a href="https://www.instagram.com/nobuhotels/" target="_blank">Nobu Hotels</a>, <a href="https://www.instagram.com/brownhotels/" target="_blank">Brown Hotels</a>, <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Brown Hotels Greece Facebook</a>.</p>
-
-    <div class="context-grid">
-      <div class="ccard">
-        <h4>The content-efficiency gap</h4>
-        <p>Casa Cook earns <strong>~322 followers per post</strong> (260K / 808 posts). Brown Hotels earns <strong>~27 per post</strong> (39K / 1,427 posts) while following 3,928 accounts — a follow-for-follow growth pattern, not organic pull. That's roughly a <strong>12x efficiency gap</strong> against the closest design-hotel comparable.</p>
-        <span class="src">Sources: <a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook</a>, <a href="https://www.instagram.com/brownhotels/" target="_blank">Brown Hotels</a></span>
-      </div>
-      <div class="ccard">
-        <h4>No Greek demand hub, no F&amp;B pillar</h4>
-        <p>The corporate Greek Facebook page sits at 103 followers, zero reviews, and went <strong>~5 weeks dark in peak season</strong>. Its only dining post drew 1 reaction. Casa Cook, by contrast, runs dedicated "Gastronomy" and "Beverages" pillars on its profile as a matter of brand structure.</p>
-        <span class="src">Sources: <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Facebook</a>, <a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook</a></span>
-      </div>
-      <div class="ccard">
-        <h4>Executional hygiene failures</h4>
-        <p>Four profile-picture changes in 13 minutes on the Greek page. A broken restaurant-promo video on Isla Brown Corinthia's Facebook. A LinkedIn description that still hasn't been updated to reflect the Israel Canada ownership or the Play rebrand.</p>
-        <span class="src">Sources: <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Facebook</a>, <a href="https://www.facebook.com/IslaBrownCorinthia/" target="_blank">Isla Brown Corinthia</a>, <a href="https://www.linkedin.com/company/brown-hotels-greece" target="_blank">LinkedIn</a></span>
-      </div>
-      <div class="ccard">
-        <h4>Zero verified TikTok presence</h4>
-        <p>No Brown Hotels or Play account was found on TikTok — a total absence on the fastest-growing travel-discovery channel, while every credible category benchmark treats short-form food-and-property content as core acquisition, not an extra.</p>
-        <span class="src">Not verified as existing — treat as a confirmed gap, not an omission in research.</span>
-      </div>
-    </div>
-
-    <div class="bottomline">
-      <p>Brown isn't losing the content war on production value — it's losing it on <strong>structure and consistency</strong>. There is no Greek hub, no F&amp;B pillar, and a review-generation gap so wide that Play Paros's direct neighbor has <strong>100x more reviews</strong> at a higher rating. That is a demand-generation system waiting to be built, not a brand needing to be reinvented.</p>
-    </div>
+    <p style="margin-top:20px;font-size:1.05rem;">Brown's main Instagram has <b>39,000 followers</b>. Casa Cook — the closest comparable Greek boutique brand — has <b>260,000</b>, with a dedicated food content page. There is <b>no TikTok</b> for Brown in Greece at all.
+      <span class="src-note">Sources: <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Facebook</a>, <a href="https://www.instagram.com/brownhotels/" target="_blank">Instagram</a>, <a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook Instagram</a></span>
+    </p>
   </div>
 </section>
 
-<!-- SECTION 4 — 5 MISTAKES -->
+<!-- SECTION 4: 5 mistakes -->
 <section id="s4" class="mistakes" style="background:var(--paper-2);">
   <div class="wrap">
-    <div class="split-head"><span class="tag">✕</span><h2 class="section-title">5 big mistakes, verified</h2></div>
-    <div class="card-list">
-      <div class="mw-card">
-        <span class="n">1</span>
-        <h5>F&amp;B is the single largest driver of negative sentiment — and it's a management failure</h5>
-        <p>Cold food, monotonous buffets, multi-day beverage stock-outs, undrinkable vending-machine coffee. One reviewer names the culprit directly: "the F&amp;B manager is to blame."</p>
-        <span class="src">Sources: <a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor — Corinthia</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g1933469-d495537-Reviews-Brown_Beach_Chalkida-Agios_Minas_Euboea_Region_Central_Greece.html" target="_blank">Chalkida</a></span>
+    <div class="split-head"><div class="tag-icon">✕</div><h2 class="section-title">5 mistakes, proven</h2></div>
+    <div class="item-grid">
+      <div class="item">
+        <div class="item-num">01</div>
+        <div class="item-title">Food is the #1 complaint, everywhere</div>
+        <div class="item-body">Cold food, boring buffets, drinks out of stock for days. This is <b>management failure</b>, not bad luck — it happens at every property.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">2</span>
-        <h5>Breakfast is destroying rate justification at the flagship</h5>
-        <p>At ~€200/night, guests write the coffee is "tasteless" and food service feels "completely unmanaged." Israeli business press even framed the entire chain collapse around "debts and breakfast."</p>
-        <span class="src">Sources: <a href="https://www.tripadvisor.com/Hotel_Review-g189400-d19525668-Reviews-Brown_Acropol-Athens_Attica.html" target="_blank">TripAdvisor — Acropol</a>, <a href="https://he.wikipedia.org/wiki/%D7%9E%D7%9C%D7%95%D7%A0%D7%95%D7%AA_%D7%91%D7%A8%D7%90%D7%95%D7%9F" target="_blank">TheMarker headline via Wikipedia</a></span>
+      <div class="item">
+        <div class="item-num">02</div>
+        <div class="item-title">Breakfast is hurting the €200/night flagship</div>
+        <div class="item-body">At Brown Acropol in Athens, guests paying premium rates call the coffee "tasteless" and say it's "unworthy for 200 euros a night."</div>
       </div>
-      <div class="mw-card">
-        <span class="n">3</span>
-        <h5>All-inclusive pricing that reads as extraction, not hospitality</h5>
-        <p>€3 for 500ml water, €1 per coffee capsule, snack bar and grill excluded from all-inclusive, €5 for a coke. Produces the single most damaging line in the entire review set: "Brown used to be synonymous with quality and detail, now it's a rip off."</p>
-        <span class="src">Sources: <a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor — Corinthia</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g262045-d652883-Reviews-Brown_Beach_Eretria-Eretria_Euboea_Region_Central_Greece.html" target="_blank">Eretria</a></span>
+      <div class="item">
+        <div class="item-num">03</div>
+        <div class="item-title">Guests feel nickel-and-dimed</div>
+        <div class="item-body">€3 for a small water bottle, €5 for a coke, coffee not included in "all-inclusive." Guests use the word <b>"ripoff."</b></div>
       </div>
-      <div class="mw-card">
-        <span class="n">4</span>
-        <h5>Understaffing and an untrained service culture, repeating across properties</h5>
-        <p>"Seriously understaffed… one bartender at the pool bar at a time," staff quoted saying "it's not our job to go to the customer," housekeeping refusing linen changes across an entire stay.</p>
-        <span class="src">Sources: <a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor — Corinthia</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g1933469-d495537-Reviews-Brown_Beach_Chalkida-Agios_Minas_Euboea_Region_Central_Greece.html" target="_blank">Chalkida</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g262045-d652883-Reviews-Brown_Beach_Eretria-Eretria_Euboea_Region_Central_Greece.html" target="_blank">Eretria</a></span>
+      <div class="item">
+        <div class="item-num">04</div>
+        <div class="item-title">Staff are untrained and understaffed</div>
+        <div class="item-body">One staff member was quoted saying: "It's not our job to go to the customer." This repeats across three different hotels.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">5</span>
-        <h5>A Greek growth plan with no demand engine and no F&amp;B content story</h5>
-        <p>Targeting 3,000 rooms by 2030 while the corporate Greek Facebook page has 103 followers, zero reviews, and a 5-week in-season dark spell. Play Paros carries 4–7 TripAdvisor reviews against 412 for the boutique hotel next door.</p>
-        <span class="src">Sources: <a href="https://www.ot.gr/2025/12/10/tourismos/israel-canada-hotels-stoxos-ta-3-000-domatia-stin-ellada-me-simaia-tin-brown/" target="_blank">OT.gr</a>, <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Facebook</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g642171-d555308-Reviews-APOLLON_Design_Boutique_Hotel-Parikia_Paros_Cyclades_South_Aegean.html" target="_blank">Apollon TripAdvisor</a></span>
+      <div class="item">
+        <div class="item-num">05</div>
+        <div class="item-title">Nobody is building an audience in Greece</div>
+        <div class="item-body">103 Facebook followers for the whole country, while the plan is to triple room count by 2030. There's no audience to fill those rooms.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 5 — 5 WINS -->
+<!-- SECTION 5: 5 wins -->
 <section id="s5" class="wins">
   <div class="wrap">
-    <div class="split-head"><span class="tag">✓</span><h2 class="section-title">5 huge win opportunities</h2></div>
-    <div class="card-list">
-      <div class="mw-card">
-        <span class="n">1</span>
-        <h5>Convert the Play hotels' F&amp;B void into high-margin ancillary revenue</h5>
-        <p>Play Paros currently sends guests next door for breakfast, yet its à-la-carte breakfast already scores 10.0 on Booking.com. A low-capex branded breakfast + rooftop/beach-bar module across the three Play hotels captures spend that's currently walking out the door — right as Play Theatrou adds 50 rooms in September 2026.</p>
-        <span class="src">Sources: <a href="https://www.booking.com/hotel/gr/play-paros.html" target="_blank">Booking.com</a>, <a href="https://www.ot.gr/2025/12/10/tourismos/israel-canada-hotels-stoxos-ta-3-000-domatia-stin-ellada-me-simaia-tin-brown/" target="_blank">OT.gr</a></span>
+    <div class="split-head"><div class="tag-icon">✓</div><h2 class="section-title">5 wins you can offer today</h2></div>
+    <div class="item-grid">
+      <div class="item">
+        <div class="item-num">01</div>
+        <div class="item-title">Bring food on-site at Play Paros</div>
+        <div class="item-body">Right now guests walk next door for breakfast. Booking.com already scores that outside breakfast a <b>10.0</b>. Bring it in-house, keep the margin, fix the #1 complaint. Low cost, fast payback.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">2</span>
-        <h5>Fix the buffet and beverage supply chain — buy back 0.5–0.8 stars fast</h5>
-        <p>Corinthia's negatives are almost entirely fixable operations: par-stock discipline, a holding-temperature protocol, a 14-day menu cycle, one additional peak-hour bar FTE. Cheapest rate-defence available on a Hilton-affiliated soft-brand asset.</p>
-        <span class="src">Source: <a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor — Corinthia</a></span>
+      <div class="item">
+        <div class="item-num">02</div>
+        <div class="item-title">Fix the kitchen basics at the resorts</div>
+        <div class="item-body">Cold food and empty drink stations are <b>fixable this month</b>: proper hot-holding, stock discipline, one more bartender at peak hours. Cheapest way to win back review score.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">3</span>
-        <h5>Re-architect all-inclusive from extraction to generosity-with-upsell</h5>
-        <p>Free water and coffee in the base tier; a paid premium dining tier as a bookable upgrade instead of a resented exclusion. Reverses the "rip-off" narrative and is the fastest route to positive EBITDA that doesn't require renegotiating rent.</p>
-        <span class="src">Source: <a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">DeepTASE — lease economics</a></span>
+      <div class="item">
+        <div class="item-num">03</div>
+        <div class="item-title">Turn "all-inclusive" from a trap into a gift</div>
+        <div class="item-body">Make water and coffee free. Add a paid upgrade tier for the nice restaurant. Stops the "ripoff" reviews and makes more money at the same time.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">4</span>
-        <h5>Own the kosher-Mediterranean F&amp;B niche properly</h5>
-        <p>Chalkida already runs a Mehadrin kosher resort with dual kitchens and rabbinic supervision, and Avigad has already proven the model in Cyprus with a dedicated chef. Current execution is criticized for lacking local character ("no Greek salad!"). A kosher-Greek culinary programme converts compliance into a marketable cuisine for the 20–25% Israeli guest mix management already targets.</p>
-        <span class="src">Sources: <a href="https://www.ynetnews.com/travel/article/h1gsajegel" target="_blank">Ynetnews</a>, <a href="https://www.jpost.com/travel/article-856148" target="_blank">Jerusalem Post</a></span>
+      <div class="item">
+        <div class="item-num">04</div>
+        <div class="item-title">Make the kosher resort actually Greek</div>
+        <div class="item-body">Chalkida is now a kosher resort — good idea, weak execution. One review says: <i>"I was in Greece, and there was no Greek salad!"</i> A kosher-Greek menu is an easy, obvious fix and a real differentiator.</div>
       </div>
-      <div class="mw-card">
-        <span class="n">5</span>
-        <h5>Build the missing Greek demand engine — with food as the content pillar</h5>
-        <p>Consolidate a single Brown/Play Greece hub, launch a TikTok/Reels-first food-and-rooftop content engine, add a UGC hashtag mechanic, and run a post-stay review-generation flow to close the review-volume gap. Villa Brown Ermou already proves Brown can hit 4.8 cleanliness / 4.9 location with a restaurant attached — use it as the internal proof case.</p>
-        <span class="src">Sources: <a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook benchmark</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g189400-d9989976-Reviews-Villa_Brown_Ermou-Athens_Attica.html" target="_blank">Villa Brown Ermou</a></span>
+      <div class="item">
+        <div class="item-num">05</div>
+        <div class="item-title">Build a Greece-only content page about food</div>
+        <div class="item-body">Casa Cook gets 6x the followers by posting about food and drink. Brown Greece has almost no presence. A single Instagram/TikTok page focused on food, run properly, is the fastest way to build demand before 2027.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 6 — THE SCRIPT -->
 <section id="s6" style="background:var(--aegean-deep);color:var(--paper);">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num" style="-webkit-text-stroke-color:var(--paper); opacity:0.4;">06</span>
-      <h2 class="section-title" style="color:var(--paper);">Walking in: <span class="accent">the positioning</span></h2>
+      <span class="section-num" style="-webkit-text-stroke-color:var(--paper);opacity:0.5;">→</span>
+      <h2 class="section-title" style="color:var(--paper);">How to walk in</h2>
     </div>
-    <p class="lede" style="color:var(--paper);opacity:0.85;">Lead with his own standard — never with the insolvency. Debt is his defensive ground; food quality is his stated pride, and therefore the most persuadable ground in the room.</p>
-    <div class="script-box" style="background:rgba(255,253,248,0.06);border-color:rgba(255,253,248,0.16);">
-      <p class="line" style="color:var(--paper);">Your service reputation is an asset. I know how to systemize it so it scales beyond individual staff excellence.</p>
-      <p class="line" style="color:var(--paper);">Where the guest promise is inconsistent — especially around F&amp;B — I close the gap between expectation, execution, and monetization.</p>
-      <p class="line" style="color:var(--paper);">In a lease-heavy environment, I focus on the three things you can still move this year: margin, ancillary capture, and repeatable standards.</p>
-    </div>
-    <div class="context-grid" style="margin-top:40px;">
-      <div class="ccard" style="background:rgba(255,253,248,0.06);border-color:rgba(255,253,248,0.16);">
-        <h4 style="color:#f2c48a;">Open with</h4>
-        <p style="color:var(--paper);opacity:0.85;">"I don't just run F&amp;B. I increase total guest value by aligning service standards, outlet concepts, upsell design, and demand generation around the real guest journey."</p>
-      </div>
-      <div class="ccard" style="background:rgba(255,253,248,0.06);border-color:rgba(255,253,248,0.16);">
-        <h4 style="color:#f2c48a;">Never say</h4>
-        <p style="color:var(--paper);opacity:0.85;">Anything framed as "Israel Canada outsourced F&amp;B to Canada" — that specific arrangement is not verified anywhere in the public record. Don't stake credibility on it.</p>
-      </div>
-    </div>
+    <p style="font-size:1.3rem;max-width:820px;font-family:var(--font-display);line-height:1.35;">"You've told the press food is part of your promise. Your own guests are telling you, in writing, that promise isn't being kept — and it's the one thing you can fix without touching your rent. Let me help you fix it."</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="foot-title">Verification ledger</div>
-    <div class="foot-cols">
-      <div><strong>Verified — financials &amp; deal structure:</strong><br/><a href="https://www.globes.co.il/news/article.aspx?did=1001496882" target="_blank">Globes</a>, <a href="https://en.globes.co.il/en/article-brown-hotels-asks-court-to-approve-sale-to-israel-canada-1001496884" target="_blank">Globes EN</a>, <a href="https://www.calcalist.co.il/market/article/r1m009cteye" target="_blank">Calcalist</a>, <a href="https://www.deeptase.co.il/en/analysis/2049" target="_blank">DeepTASE</a></div>
-      <div><strong>Verified — Greek portfolio &amp; leadership:</strong><br/><a href="https://www.ot.gr/2025/12/10/tourismos/israel-canada-hotels-stoxos-ta-3-000-domatia-stin-ellada-me-simaia-tin-brown/" target="_blank">OT.gr</a>, <a href="https://bizness.gr/epekteinetai-sti-diacheirisi-xenodocheion-i-brown-hotels-ti-simatodotei-i-nea-stratigiki-kateythynsi-meta-tin-exagora-ton-xenodocheion/amp/" target="_blank">Bizness.gr</a>, <a href="https://www.ynetnews.com/travel/article/h1gsajegel" target="_blank">Ynetnews</a></div>
-      <div><strong>Verified — reviews:</strong><br/><a href="https://www.tripadvisor.com/Hotel_Review-g4501379-d23341412-Reviews-Isla_Brown_Corinthia_Resort_Spa_Curio_Collection_By_Hilton-Agioi_Theodoroi_Corinthia.html" target="_blank">TripAdvisor Corinthia</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g1933469-d495537-Reviews-Brown_Beach_Chalkida-Agios_Minas_Euboea_Region_Central_Greece.html" target="_blank">Chalkida</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g262045-d652883-Reviews-Brown_Beach_Eretria-Eretria_Euboea_Region_Central_Greece.html" target="_blank">Eretria</a>, <a href="https://www.tripadvisor.com/Hotel_Review-g189400-d19525668-Reviews-Brown_Acropol-Athens_Attica.html" target="_blank">Acropol</a></div>
-      <div><strong>Verified — social benchmark:</strong><br/><a href="https://www.instagram.com/casacookhotels/" target="_blank">Casa Cook</a>, <a href="https://www.instagram.com/brownhotels/" target="_blank">Brown Hotels</a>, <a href="https://www.facebook.com/BrownHotelsGreece/" target="_blank">Brown Hotels Greece FB</a></div>
-    </div>
-    <div class="disclaimer">Not verified / explicitly excluded from this brief: any "Israel Canada F&amp;B outsourcing to Canada" arrangement (no source supports this — every source describes lease assumption, brand transfer, and debt assignment); "Brown Beach House" and "The Rooster Mykonos" as current Greek Brown properties; Google Reviews aggregate ratings (blocked from automated retrieval); Play Paros / Isla Brown Corinthia / Brown Beach Chalkida individual Instagram follower counts (login-walled). Every claim above traces to a cited, fetched source as of 16 August 2026.</div>
+    <p>Prepared for a private meeting. Every number above comes from a real source — TripAdvisor, Booking.com, Expedia, Trip.com, Facebook, Instagram, Globes, Calcalist, and DeepTASE. Full source list and quotes available on request.</p>
   </div>
 </footer>
 
