@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --black:#0a0a0a;
-  --black-2:#121212;
-  --black-3:#1a1712;
-  --cream:#f3f0e9;
-  --cream-dim:#e8e2d4;
-  --gold:#c9a961;
-  --gold-bright:#e8c878;
-  --terracotta:#e2703a;
-  --terracotta-glow:#ff8c52;
-  --ice:#eef1f0;
-  --line: rgba(243,240,233,0.14);
+  --black:#0f2b2e;
+  --black-2:#163538;
+  --black-3:#1a3f42;
+  --cream:#fbf8f1;
+  --cream-dim:#ece4d0;
+  --gold:#f2c14e;
+  --gold-bright:#f7d37e;
+  --terracotta:#0e8a8a;
+  --terracotta-glow:#2fb8b8;
+  --ice:#fbf8f1;
+  --line: rgba(251,248,241,0.16);
   --font-display:'Fraunces', Georgia, serif;
   --font-body:'Inter', sans-serif;
   --wide:1280px;
@@ -45,7 +45,7 @@ main{position:relative;z-index:1;}
 h1.hero-title{font-family:var(--font-display);font-weight:340;font-size:clamp(3.2rem,8vw,6.8rem);line-height:0.98;letter-spacing:-0.01em;margin-bottom:30px;color:var(--cream);text-shadow:0 0 60px rgba(201,169,97,0.25);}
 h1.hero-title em{font-style:italic;font-weight:300;color:var(--gold-bright);display:block;text-shadow:0 0 40px rgba(232,200,120,0.5), 0 0 90px rgba(232,200,120,0.25);}
 .hero-sub{font-size:clamp(1.2rem,2.2vw,1.6rem);max-width:900px;color:rgba(243,240,233,0.72);font-weight:400;line-height:1.45;}
-.hero-meta{margin-top:36px;display:flex;gap:32px;flex-wrap:wrap;font-size:0.92rem;color:rgba(243,240,233,0.6);font-weight:600;}
+.hero-meta{margin-top:36px;display:flex;gap:32px;flex-wrap:wrap;font-size:1.05rem;color:rgba(251,248,241,0.78);font-weight:600;}
 .hero-meta span{display:flex;align-items:center;gap:10px;}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--terracotta-glow);box-shadow:0 0 10px var(--terracotta-glow);display:inline-block;}
 
@@ -106,7 +106,7 @@ table.audit tr:last-child td{border-bottom:none;}
 .tag.value{background:rgba(232,200,120,0.15);color:var(--gold-bright);border:1px solid rgba(232,200,120,0.3);}
 
 .quote-block{background:linear-gradient(160deg, var(--black-3), var(--black-2));border-left:3px solid var(--terracotta-glow);border-radius:0 18px 18px 0;padding:26px 30px;margin:20px 0;font-size:1.15rem;font-style:italic;font-family:var(--font-display);color:var(--cream);box-shadow:0 20px 40px -20px rgba(0,0,0,0.5);}
-.quote-src{margin-top:12px;font-size:0.85rem;font-style:normal;color:rgba(243,240,233,0.55);font-weight:600;font-family:var(--font-body);}
+.quote-src{margin-top:12px;font-size:0.98rem;font-style:normal;color:rgba(251,248,241,0.68);font-weight:600;font-family:var(--font-body);}
 .quote-src a{color:var(--gold-bright);border-bottom:1px solid rgba(232,200,120,0.3);}
 
 .correction-box{background:linear-gradient(155deg, rgba(226,112,58,0.1), var(--black-3));border:1px solid rgba(226,112,58,0.35);border-radius:22px;padding:32px 36px;margin-top:28px;box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);}
@@ -135,9 +135,9 @@ table.audit tr:last-child td{border-bottom:none;}
 .closer-section{background:linear-gradient(180deg, var(--black-3), var(--black));text-align:center;}
 .closer-quote{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.4vw,2.6rem);max-width:900px;margin:0 auto;line-height:1.4;color:var(--gold-bright);text-shadow:0 0 50px rgba(232,200,120,0.3);}
 
-footer{background:var(--black);border-top:1px solid var(--line);padding:44px 0;text-align:center;font-size:0.88rem;color:rgba(243,240,233,0.5);}
+footer{background:var(--black);border-top:1px solid var(--line);padding:44px 0;text-align:center;font-size:1rem;color:rgba(251,248,241,0.65);}
 footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
-.src-note{font-size:0.82rem;color:rgba(243,240,233,0.45);margin-top:12px;display:block;}
+.src-note{font-size:0.95rem;color:rgba(251,248,241,0.55);margin-top:12px;display:block;}
 </style>
 </head>
 <body>
@@ -247,14 +247,14 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
     <table class="audit">
       <tr><th>Hotel</th><th>Score</th><th># reviews read</th><th>What's wrong</th></tr>
       <tr>
-        <td><b style="color:var(--cream);">Isla Brown Corinthia</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.85rem;">Hilton-branded</span></td>
-        <td>3.8 / 5<br><span style="font-size:0.8rem;color:var(--terracotta-glow);">26% rated 1–2 stars</span></td>
+        <td><b style="color:var(--cream);">Isla Brown Corinthia</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.95rem;">Hilton-branded</span></td>
+        <td>3.8 / 5<br><span style="font-size:0.92rem;color:var(--terracotta-glow);">26% rated 1–2 stars</span></td>
         <td>12</td>
         <td><span class="tagset"><span class="tag fb">Food</span><span class="tag staff">Staff</span><span class="tag noise">Noise</span></span><br>Cold food, days without drinks in stock, one guest named the food manager directly as the problem.</td>
       </tr>
       <tr>
-        <td><b style="color:var(--cream);">Brown Beach Chalkida</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.85rem;">now kosher resort</span></td>
-        <td>3.5 / 5<br><span style="font-size:0.8rem;color:var(--terracotta-glow);">36% rated 1–2 stars</span></td>
+        <td><b style="color:var(--cream);">Brown Beach Chalkida</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.95rem;">now kosher resort</span></td>
+        <td>3.5 / 5<br><span style="font-size:0.92rem;color:var(--terracotta-glow);">36% rated 1–2 stars</span></td>
         <td>9</td>
         <td><span class="tagset"><span class="tag fb">Food</span><span class="tag noise">Noise</span></span><br>Called "the big black spot." Same meals repeated daily, food sometimes not available at all.</td>
       </tr>
@@ -265,13 +265,13 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
         <td><span class="tagset"><span class="tag fb">Food</span><span class="tag clean">Cleaning</span><span class="tag staff">Staff</span></span><br>Bland all-inclusive food, dirty linens not replaced, phones unanswered before check-in.</td>
       </tr>
       <tr>
-        <td><b style="color:var(--cream);">Brown Acropol</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.85rem;">Athens flagship, ~€200/night</span></td>
+        <td><b style="color:var(--cream);">Brown Acropol</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.95rem;">Athens flagship, ~€200/night</span></td>
         <td>4.4 / 5</td>
         <td>10</td>
         <td><span class="tagset"><span class="tag fb">Food</span><span class="tag value">Value</span></span><br>Breakfast and coffee are the single most repeated complaint at the flagship city hotel.</td>
       </tr>
       <tr>
-        <td><b style="color:var(--gold-bright);">Play Paros</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.85rem;">your target property</span></td>
+        <td><b style="color:var(--gold-bright);">Play Paros</b><br><span style="color:rgba(243,240,233,0.5);font-size:0.95rem;">your target property</span></td>
         <td>Mostly 9–10/10 on booking sites</td>
         <td>~25+ across platforms</td>
         <td><span class="tagset"><span class="tag fb">Food</span></span><br>Guests are happy overall — but the #1 complaint is "no food on-site." One review: <i>"very expensive and no onsite food services."</i></td>
