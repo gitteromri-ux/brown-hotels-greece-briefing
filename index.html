@@ -18,6 +18,9 @@
   --gold-bright:#f7d37e;
   --terracotta:#0e8a8a;
   --terracotta-glow:#2fb8b8;
+  --sunset:#ff6b3d;
+  --sunset-bright:#ff9257;
+  --coral:#ff5c7a;
   --ice:#fbf8f1;
   --line: rgba(251,248,241,0.16);
   --font-display:'Fraunces', Georgia, serif;
@@ -38,16 +41,26 @@ main{position:relative;z-index:1;}
 /* RIBBON */
 .ribbon{background:var(--black-2);color:var(--gold);font-size:clamp(0.68rem,1.3vw,0.82rem);letter-spacing:0.18em;text-transform:uppercase;padding:14px 0;text-align:center;font-weight:700;border-bottom:1px solid var(--line);}
 
-/* HERO */
-.hero{position:relative;padding:clamp(56px,10vw,120px) 0 clamp(48px,7vw,80px);}
-.hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(0.8rem,1.3vw,1rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta-glow);font-weight:800;margin-bottom:28px;}
-.hero-kicker::before{content:"";width:48px;height:2px;background:var(--terracotta-glow);box-shadow:0 0 12px var(--terracotta-glow);}
-h1.hero-title{font-family:var(--font-display);font-weight:340;font-size:clamp(3.2rem,8vw,6.8rem);line-height:0.98;letter-spacing:-0.01em;margin-bottom:30px;color:var(--cream);text-shadow:0 0 60px rgba(201,169,97,0.25);}
-h1.hero-title em{font-style:italic;font-weight:300;color:var(--gold-bright);display:block;text-shadow:0 0 40px rgba(232,200,120,0.5), 0 0 90px rgba(232,200,120,0.25);}
-.hero-sub{font-size:clamp(1.2rem,2.2vw,1.6rem);max-width:900px;color:rgba(243,240,233,0.72);font-weight:400;line-height:1.45;}
-.hero-meta{margin-top:36px;display:flex;gap:32px;flex-wrap:wrap;font-size:1.05rem;color:rgba(251,248,241,0.78);font-weight:600;}
-.hero-meta span{display:flex;align-items:center;gap:10px;}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--terracotta-glow);box-shadow:0 0 10px var(--terracotta-glow);display:inline-block;}
+/* HERO — full-bleed photographic */
+.hero{position:relative;padding:0;min-height:min(96vh,920px);display:flex;align-items:flex-end;overflow:hidden;}
+.hero-photo{position:absolute;inset:0;z-index:0;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 65%;}
+.hero-photo::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(0deg, var(--black) 0%, rgba(15,43,46,0.85) 20%, rgba(15,43,46,0.15) 55%, rgba(15,43,46,0.35) 100%),
+    linear-gradient(100deg, rgba(15,43,46,0.55) 0%, transparent 45%);
+}
+.hero-inner{position:relative;z-index:1;padding:clamp(48px,8vw,90px) 0 clamp(56px,8vw,88px);width:100%;}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-size:clamp(0.8rem,1.3vw,1rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--sunset-bright);font-weight:800;margin-bottom:24px;}
+.hero-kicker::before{content:"";width:48px;height:2px;background:var(--sunset-bright);box-shadow:0 0 12px var(--sunset-bright);}
+h1.hero-title{font-family:var(--font-display);font-weight:340;font-size:clamp(3rem,7.6vw,6.4rem);line-height:0.98;letter-spacing:-0.01em;margin-bottom:26px;color:var(--cream);text-shadow:0 4px 40px rgba(0,0,0,0.5);}
+h1.hero-title em{font-style:italic;font-weight:300;color:var(--gold-bright);display:block;text-shadow:0 0 40px rgba(232,200,120,0.6), 0 4px 30px rgba(0,0,0,0.5);}
+.hero-sub{font-size:clamp(1.2rem,2.2vw,1.6rem);max-width:820px;color:rgba(255,255,255,0.92);font-weight:500;line-height:1.45;text-shadow:0 2px 20px rgba(0,0,0,0.6);}
+.hero-meta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;font-size:0.98rem;color:var(--black);font-weight:700;}
+.hero-meta span{display:flex;align-items:center;gap:8px;background:var(--gold-bright);padding:9px 16px 9px 12px;border-radius:100px;box-shadow:0 8px 20px -6px rgba(0,0,0,0.4);}
+.hero-meta span:nth-child(2){background:var(--sunset-bright);}
+.hero-meta span:nth-child(3){background:var(--cream);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--black);display:inline-block;}
+@media (max-width:700px){.hero{min-height:78vh;}}
 
 /* BOTTOM LINES - 3D layered cards */
 .bl-section{padding:clamp(20px,4vw,40px) 0 clamp(40px,6vw,72px);}
@@ -72,6 +85,13 @@ h1.hero-title em{font-style:italic;font-weight:300;color:var(--gold-bright);disp
 .bl-body{font-size:clamp(1.05rem,1.5vw,1.2rem);color:rgba(243,240,233,0.68);line-height:1.55;}
 .bl-body b{color:var(--cream);font-weight:700;}
 @media (max-width:700px){.bl-card{grid-template-columns:1fr;gap:14px;}.bl-num{font-size:2.4rem;}}
+
+/* Leon photo card variant */
+.bl-card.leon-card{grid-template-columns:180px 1fr;border:1px solid rgba(255,146,87,0.35);background:linear-gradient(155deg, #24322a 0%, var(--black-2) 100%);}
+.leon-photo{width:180px;height:180px;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px -12px rgba(0,0,0,0.7), 0 0 0 3px rgba(255,146,87,0.4);position:relative;}
+.leon-photo img{width:100%;height:100%;object-fit:cover;}
+.leon-photo::after{content:"LEON AVIGAD";position:absolute;bottom:0;left:0;right:0;background:rgba(15,43,46,0.88);color:var(--sunset-bright);font-size:0.62rem;font-weight:800;letter-spacing:0.08em;text-align:center;padding:6px 4px;}
+@media (max-width:700px){.bl-card.leon-card{grid-template-columns:1fr;}.leon-photo{width:140px;height:140px;}}
 
 section{padding:clamp(56px,8vw,100px) 0;position:relative;}
 .section-num{font-family:var(--font-display);font-size:1.4rem;color:var(--terracotta-glow);font-weight:400;display:block;margin-bottom:14px;letter-spacing:0.05em;}
@@ -135,6 +155,21 @@ table.audit tr:last-child td{border-bottom:none;}
 .closer-section{background:linear-gradient(180deg, var(--black-3), var(--black));text-align:center;}
 .closer-quote{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.4vw,2.6rem);max-width:900px;margin:0 auto;line-height:1.4;color:var(--gold-bright);text-shadow:0 0 50px rgba(232,200,120,0.3);}
 
+/* PORTFOLIO — photographic property grid */
+.portfolio-section{background:linear-gradient(180deg, var(--black) 0%, var(--black-2) 100%);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px;}
+.pf-card{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.7);aspect-ratio:4/3;}
+.pf-card.wide{grid-column:1 / -1;aspect-ratio:16/7;}
+.pf-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.pf-card:hover img{transform:scale(1.05);}
+.pf-card .pf-overlay{position:absolute;inset:0;background:linear-gradient(0deg, rgba(15,43,46,0.95) 0%, rgba(15,43,46,0.15) 45%, transparent 70%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px 26px;}
+.pf-tag{display:inline-block;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:10px;width:fit-content;}
+.pf-tag.warn{background:var(--sunset-bright);color:var(--black);}
+.pf-tag.ok{background:var(--gold-bright);color:var(--black);}
+.pf-name{font-family:var(--font-display);font-size:clamp(1.3rem,2.4vw,1.8rem);color:var(--cream);font-weight:500;text-shadow:0 2px 16px rgba(0,0,0,0.6);}
+.pf-note{font-size:0.95rem;color:rgba(251,248,241,0.82);margin-top:6px;max-width:32ch;line-height:1.4;text-shadow:0 2px 10px rgba(0,0,0,0.6);}
+@media (max-width:760px){.portfolio-grid{grid-template-columns:1fr;}.pf-card.wide{aspect-ratio:4/3;}}
+
 footer{background:var(--black);border-top:1px solid var(--line);padding:44px 0;text-align:center;font-size:1rem;color:rgba(251,248,241,0.65);}
 footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
 .src-note{font-size:0.95rem;color:rgba(251,248,241,0.55);margin-top:12px;display:block;}
@@ -148,7 +183,8 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
 <div class="ribbon">Prepared for meeting with Leon Avigad, Founder &amp; CEO, Brown Hotels — Greece portfolio</div>
 
 <section class="hero">
-  <div class="wrap">
+  <div class="hero-photo"><img src="assets/hotels/villabrown-sunset-terrace.jpg" alt="Brown Hotels Greece rooftop terrace at sunset" /></div>
+  <div class="wrap hero-inner">
     <div class="hero-kicker">Meeting Brief — 3 Subjects, 3 Bottom Lines</div>
     <h1 class="hero-title">Brown Hotels Greece<br><em>Where the money is left on the table.</em></h1>
     <p class="hero-sub">Guests like the buildings. Guests hate the food. Nobody in Greece is watching your social pages. That gap is the opening.</p>
@@ -163,8 +199,8 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
 <section class="bl-section">
   <div class="wrap">
   <div class="bl-grid">
-    <div class="bl-card">
-      <div class="bl-num">01</div>
+    <div class="bl-card leon-card">
+      <div class="leon-photo"><img src="assets/hotels/leon-avigad.jpg" alt="Leon Avigad, Founder & CEO, Brown Hotels" /></div>
       <div>
         <div class="bl-head">Leon Avigad</div>
         <div class="bl-punch">He promised to protect food quality. He hasn't.</div>
@@ -287,6 +323,59 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
   </div>
 </section>
 
+<!-- PORTFOLIO: real photos of every Greek property in play -->
+<section id="portfolio" class="portfolio-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">—</span>
+      <h2 class="section-title">The <span class="accent">8 properties</span>, in one look</h2>
+      <p class="section-sub">Real photos, not stock. Every location on this table is checked above — here is what the buildings actually look like, and where the F&amp;B gap actually lives.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="pf-card wide">
+        <img src="assets/hotels/acropol-rooftop-restaurant.jpg" alt="Brown Acropol rooftop restaurant, Athens, at dusk overlooking the Acropolis" />
+        <div class="pf-overlay">
+          <span class="pf-tag warn">Flagship — breakfast is the #1 complaint</span>
+          <div class="pf-name">Brown Acropol — Athens</div>
+          <div class="pf-note">~€200/night flagship, 4.4/5. The rooftop is stunning — guests still call the coffee "tasteless."</div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="assets/hotels/acropol-room.jpg" alt="Brown Acropol guest room, Athens" />
+        <div class="pf-overlay">
+          <span class="pf-tag ok">Design is not the problem</span>
+          <div class="pf-name">Brown Acropol — rooms</div>
+          <div class="pf-note">The product is good. The plate that arrives with it isn't.</div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="assets/hotels/chalkida-aerial.jpg" alt="Brown Beach Chalkida aerial view, rooftop pool over the sea" />
+        <div class="pf-overlay">
+          <span class="pf-tag warn">"The big black spot"</span>
+          <div class="pf-name">Brown Beach Chalkida</div>
+          <div class="pf-note">Now a kosher resort, 3.5/5. Same meals repeat daily; food sometimes runs out entirely.</div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="assets/hotels/eretria-building-aerial.jpg" alt="Brown Beach Eretria resort building and pool, aerial view" />
+        <div class="pf-overlay">
+          <span class="pf-tag warn">"Used to be quality. Now it's a rip off."</span>
+          <div class="pf-name">Brown Beach Eretria</div>
+          <div class="pf-note">3.9/5. Bland all-inclusive food, dirty linens, unanswered phones before check-in.</div>
+        </div>
+      </div>
+      <div class="pf-card wide">
+        <img src="assets/hotels/villabrown-sunset-terrace.jpg" alt="Villa Brown rooftop terrace at sunset with sea view" />
+        <div class="pf-overlay">
+          <span class="pf-tag ok">The brand promise, when it works</span>
+          <div class="pf-name">Villa Brown — the standard he's selling</div>
+          <div class="pf-note">This is the image Brown sells to investors and other hotel owners. It is not yet the guest experience at every Greek property — that gap is your opening.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 3: Social audit -->
 <section id="s3">
   <div class="wrap">
@@ -369,6 +458,43 @@ footer a{text-decoration:underline;color:rgba(243,240,233,0.6);}
         <div class="item-num">05</div>
         <div class="item-title">Build a Greece-only content page about food</div>
         <div class="item-body">Casa Cook gets 6x the followers by posting about food and drink. Brown Greece has almost no presence. A single Instagram/TikTok page focused on food, run properly, is the fastest way to build demand before 2027.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENT: the ambition, in one image -->
+<section id="ambition" class="portfolio-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">—</span>
+      <h2 class="section-title">This is the <span class="accent">ambition</span></h2>
+      <p class="section-sub">Brown's own concept renderings show where the brand wants to go. The gap between this and a cold breakfast buffet is the whole opportunity.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="pf-card wide">
+        <img src="assets/hotels/concept-gold-bar.jpg" alt="Brown Hotels concept beachfront bar with sculptural ceiling and sea view" />
+        <div class="pf-overlay">
+          <span class="pf-tag ok">The vision Brown is building toward</span>
+          <div class="pf-name">A signature F&amp;B space, done right</div>
+          <div class="pf-note">This is what "boutique hospitality visible in the food" looks like on paper. Play Paros can be the property that actually delivers it.</div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="assets/hotels/acropol-spa-corridor.jpg" alt="Brown Acropol spa and wellness corridor" />
+        <div class="pf-overlay">
+          <span class="pf-tag ok">The design language is already there</span>
+          <div class="pf-name">Brown Acropol — wellness</div>
+          <div class="pf-note">Mood, materials, lighting — all premium. F&amp;B is the one department not matching this bar.</div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="assets/hotels/hottub-deck-aerial.jpg" alt="Brown Hotels rooftop hot tub deck with guests" />
+        <div class="pf-overlay">
+          <span class="pf-tag ok">Guests already show up for the experience</span>
+          <div class="pf-name">Group amenities — the demand is there</div>
+          <div class="pf-note">The rooms sell themselves. Food and drink is the only lever left to grow revenue per guest.</div>
+        </div>
       </div>
     </div>
   </div>
